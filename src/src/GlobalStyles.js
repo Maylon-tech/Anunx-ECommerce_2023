@@ -37,7 +37,45 @@ export const PublicarBtn = styled.button`
     font-size: 1.2rem;
 `
 
+export const ContainerBottom = styled.div`
+  
+`
 
+export const GridContainer = styled.div`
+  
+`
+
+export const GridItem = styled.div`
+  
+`
+
+export const CardTopImage = styled.img`
+  
+`
+
+
+export const CardContent = styled.div`
+  
+`
+export const ProductTitle = styled.h1`
+  
+`
+
+export const Price = styled.div`
+  
+`
+
+export const CardActions = styled.div`
+  
+`
+
+export const ButtonEdit = styled.button`
+  
+`
+
+export const ButtonRemove = styled.button`
+  
+`
 
 
 
