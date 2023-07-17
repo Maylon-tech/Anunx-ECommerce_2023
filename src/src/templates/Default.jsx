@@ -1,12 +1,13 @@
 import React from 'react'
 import Header from '../components/header/Header'
+import Footer from '../components/footer/Footer'
 
 const Default = ({ children }) => {
   return (
     <>
         <Header />
         { children }
-        <footer>FOOTER</footer>
+        <Footer />
     </>
   )
 }
