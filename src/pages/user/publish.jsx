@@ -1,21 +1,48 @@
-import React from 'react'
+import React, { useState } from 'react'
 import TemplateDefault from '../../src/templates/Default'
 import { 
+    BoxDropZone,
+    BoxDropZoneDinamic,
     Button,
     Container, 
     FormContainer, 
+    IconButton, 
     Input, 
     Label, 
+    PrincipalLabel, 
     Select, 
     SubTitle, 
     TextField, 
     Title,
     Wrapper,
     WrapperBtn,
+    WrapperUpload,
 } from '@/src/styles/publish'
+import { AiOutlineDelete } from 'react-icons/ai'
+import Produto from '../../assets/react-logo.png'
+import Image from 'next/image'
+import {  useDropzone } from 'react-dropzone'
 
 
 const Publish = () => {
+    const [files, setFiles] = useState([])
+
+    const { getRootProps, getInputProps } = useDropzone({
+        accept: 'image/*',
+        onDrop: (acceptedFile) => {
+            
+            const newFiles = acceptedFile.map((file) => {
+                return Object.assign(file, {
+                    preview: URL.createObjectURL(file)
+                })
+            })
+            setFiles([
+                ...files,
+                newFiles
+            ])
+        }
+    })
+
   return (
     <TemplateDefault>
 
@@ -55,6 +82,32 @@ const Publish = () => {
                 <Wrapper>
                     <Label>Imagens</Label>
                     <h4>A Primeira imagens e a foto principal do anuncio.</h4>
+                    <WrapperUpload>
+
+                        <BoxDropZone {...getRootProps()}>  
+                            <input {...getInputProps()} />                      
+                            <h4>Clique para adicionar ou arraste a imagem aqui.</h4>
+                        </BoxDropZone>
+
+                        {
+                            files.map((file, index) => (
+                                <BoxDropZoneDinamic key={file.name}>  
+                                    <Image src={file.preview} alt='boxImg' width={140} height={140} />  
+                                    
+                                    {
+                                        index === 0 
+                                        ? <PrincipalLabel>Principal</PrincipalLabel> 
+                                        : null
+                                    }
+
+                                    <IconButton>
+                                        <AiOutlineDelete />
+                                    </IconButton>
+                                </BoxDropZoneDinamic>
+                            ))
+                        }
+
+                    </WrapperUpload>
                 </Wrapper>
 
                 <Wrapper>

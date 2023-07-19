@@ -24,7 +24,7 @@ export const SubTitle = styled.h3`
 export const FormContainer = styled.div`
     padding: 1rem;
     margin-top: 1.5rem;
-    max-width: 870px;
+    max-width: 960px;
     margin: 1rem auto;
 `
 
@@ -79,6 +79,94 @@ export const Select = styled.select`
     background: transparent;
 
     font-size: 1.2rem;
+
+`
+
+export const WrapperUpload = styled.div`
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    h4 {
+        color: #777;
+        font-size: 1rem;
+        font-weight: 300;
+        text-align: center;
+    }
+`
+
+export const BoxDropZone = styled.div`
+    border: 2px dashed gray;
+    width: 160px;
+    height: 130px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .5rem 1rem;
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+
+    &:hover {
+        border: 2px solid #222;
+    }
+`
+
+export const PrincipalLabel = styled.span`
+    color: white;
+    background-color: orange;
+    padding: .3rem;
+    border-radius: 2px;
+    font-size: 1.1rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 4;
+`
+
+
+
+export const BoxDropZoneDinamic = styled.div`
+    border: 2px dashed gray;
+    width: 160px;
+    height: 130px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .5rem 1rem;
+    cursor: pointer;
+    position: relative;
+
+   
+`
+
+export const IconButton = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .6);
+    display: grid;
+    place-items: center;
+    
+    > svg {
+        color: #eee;
+        font-size: 2rem;
+        cursor: pointer;
+        padding: .8rem;
+        border-radius: 50%;
+        border: 1px solid white;
+        transition: all .4s ease-in-out;
+
+        &:hover {
+            color: crimson;
+        }
+    }
+
+    
 
 `
 
