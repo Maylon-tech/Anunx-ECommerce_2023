@@ -43,6 +43,12 @@ const Publish = () => {
         }
     })
 
+    const handleRemoveFile = (fileName) => {
+        const newFileState = files.filter(file => file.name !== fileName)
+        setFiles(newFileState)
+    }
+
+
   return (
     <TemplateDefault>
 
@@ -100,9 +106,10 @@ const Publish = () => {
                                         : null
                                     }
 
-                                    <IconButton>
+                                    <IconButton onClick={() => handleRemoveFile(file.name)}>
                                         <AiOutlineDelete />
                                     </IconButton>
+
                                 </BoxDropZoneDinamic>
                             ))
                         }
