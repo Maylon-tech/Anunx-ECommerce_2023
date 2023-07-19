@@ -6,9 +6,12 @@ import {
     Button,
     Container, 
     FormContainer, 
+    FormControl, 
     IconButton, 
     Input, 
     Label, 
+    LabelInside, 
+    PriceInput, 
     PrincipalLabel, 
     Select, 
     SubTitle, 
@@ -122,6 +125,17 @@ const Publish = () => {
                     <h4>Escreva os detalhes do que esta vendendo.</h4>
                     <TextField></TextField>
                 </Wrapper>
+
+                <Wrapper>
+
+                    <Label>Preco</Label>
+                    <FormControl>
+                        <PriceInput />
+                        <LabelInside>R$</LabelInside>
+                    </FormControl>                    
+                    
+                </Wrapper>
+
 
                 <Wrapper>
                     <Label>Dados de Contato</Label>

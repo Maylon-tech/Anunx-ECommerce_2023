@@ -166,8 +166,6 @@ export const IconButton = styled.div`
         }
     }
 
-    
-
 `
 
 export const TextField = styled.textarea`
@@ -208,4 +206,33 @@ export const WrapperBtn = styled.form`
     align-items: center;
     justify-content: flex-end;
     background: none;    
+`
+
+export const FormControl = styled.div`
+    position: relative;
+    border: 1px solid gray;
+    border-radius: 8px;
+    display: flex;
+    justify-content: flex-end;
+    margin: 1rem;
+    background-color: red;
+`
+
+export const PriceInput = styled.input`
+    width: 90%;
+    padding: 1rem;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    font-size: 1.2rem;
+    background-color: green;
+`
+
+export const LabelInside = styled.span`
+    color: #555;
+    position: absolute;
+    left: 38px;
+    top: 17px;
+    font-size: 1.2rem;
+    font-weight: bold;
 `
