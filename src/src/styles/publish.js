@@ -215,7 +215,6 @@ export const FormControl = styled.div`
     display: flex;
     justify-content: flex-end;
     margin: 1rem;
-    background-color: red;
 `
 
 export const PriceInput = styled.input`
@@ -225,7 +224,6 @@ export const PriceInput = styled.input`
     outline: none;
     border: none;
     font-size: 1.2rem;
-    background-color: green;
 `
 
 export const LabelInside = styled.span`

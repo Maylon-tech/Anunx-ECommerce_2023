@@ -6,6 +6,7 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         box-sizing: border;
         font-family: Arial, Helvetica, sans-serif;
+        text-decoration: none;
     }
     html, body {
         scroll-behavior: smooth;
