@@ -20,6 +20,9 @@ import {
 const Header = () => {
   const [menuDrop, setMenuDrop] = useState(false)
 
+  const handleMenuDrop = () => {
+    setMenuDrop(!menuDrop)
+  }
 
   return (
     <Container>
@@ -39,7 +42,7 @@ const Header = () => {
             </ButtonAction>
           </Link>
 
-          <IconButton>
+          <IconButton onClick={() => handleMenuDrop()}>
             {
               true === false
               ? <Avatar src="" alt="profile" />
@@ -50,7 +53,7 @@ const Header = () => {
 
         </RightHeader>
 
-        <MenuDrop>
+        <MenuDrop menuBox={menuDrop}>
             <MenuItem>Meus Anuncios</MenuItem>
             <MenuItem>Publicar novo anuncio</MenuItem>
             <DividerLine />

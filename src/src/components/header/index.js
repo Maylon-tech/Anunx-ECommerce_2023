@@ -72,6 +72,7 @@ export const IconButton = styled.div`
     justify-content: center;
     gap: .5rem;
     padding: .5rem;
+    cursor: pointer;
 
     > svg {
         font-size: 1.8rem;
@@ -96,6 +97,9 @@ export const MenuDrop = styled.div`
     position: absolute;
     top: 70px;
     right: 50px;
+    transition: all .4s ease-in-out;
+    display: ${({ menuBox }) => menuBox ? 'block' : 'none'};
+    opacity: ${({ menuBox }) => menuBox ? '1' : '0'};
 `
 
 export const MenuItem = styled.div`

@@ -1,60 +1,65 @@
-import TemplateDefault from '../../src/templates/Default'
-import GlobalStyle, { 
-  Container, 
-  PublicarBtn, 
-  Title, 
+import Card from '@/src/components/card'
+import TemplateDefault from '@/src/templates/Default'
+
+import { 
   ButtonEdit,
   ButtonRemove,
-  Card, 
-  CardActions, 
-  CardContent, 
-  CardTopImage, 
-  ContainerBottom, 
+  Container, 
   GridContainer, 
-  GridItem,
-  Price,
-  ProductTitle,
-} from '../../src/GlobalStyles'
+  PublicarBtn, 
+  Title, 
+} from '@/styles/dashboard'
 
-
-
-
-const Home = () => {
+const Dashboard = () => {
   return (
     <TemplateDefault>
-      <GlobalStyle />
+      
       <Container>
-
         <Title>Meus Anuncios</Title>
         <PublicarBtn>Publicar Novos Anuncios</PublicarBtn>
-        
       </Container>
 
-      {/* <ContainerBottom>
+      <GridContainer>
+      
+        <Card 
+          image="https://i.pinimg.com/236x/ff/56/3a/ff563aa49a238d3b6e97733e55e74bb3.jpg"
+          title="Produto 01"
+          subtitle="$60.00"
+          actions={
+            <>
+              <ButtonEdit>Editar</ButtonEdit>
+              <ButtonRemove>Remover</ButtonRemove>
+            </>
+          }
+        />
+  
+        <Card 
+          image="https://i.pinimg.com/236x/07/d9/7a/07d97a2b1ab79f646345eee708509fd3.jpg"
+          title="Produto 02"
+          subtitle="$60.00"
+          actions={
+            <>
+              <ButtonEdit>Editar</ButtonEdit>
+              <ButtonRemove>Remover</ButtonRemove>
+            </>
+          }
+        />
+  
+        <Card 
+          image="https://i.pinimg.com/236x/ff/56/3a/ff563aa49a238d3b6e97733e55e74bb3.jpg"
+          title="Produto 03"
+          subtitle="$60.00"
+          actions={
+            <>
+              <ButtonEdit>Editar</ButtonEdit>
+              <ButtonRemove>Remover</ButtonRemove>
+            </>
+          }
+        />
 
-        <GridContainer>
-          <GridItem>
-            <Card>
-              <CardTopImage 
-                image={'https://source.unplash.com/random'} 
-                title="Titulo"
-              />
-              <CardContent>
-                <ProductTitle>Produtos</ProductTitle>
-                <Price>$ 60.00</Price>
-              </CardContent>
-              <CardActions>
-                <ButtonEdit>Editar</ButtonEdit>
-                <ButtonRemove>Remover</ButtonRemove>
-              </CardActions>
-            </Card>
-          </GridItem>
-
-        </GridContainer>
-
-      </ContainerBottom>  */}
+      </GridContainer>
     </TemplateDefault>
   )
 }
 
-export default Home
+export default Dashboard

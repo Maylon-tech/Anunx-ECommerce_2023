@@ -20,7 +20,8 @@ import {
     Wrapper,
     WrapperBtn,
     WrapperUpload,
-} from '@/src/styles/publish'
+} from '@/styles/publish'
+
 import { AiOutlineDelete } from 'react-icons/ai'
 import Produto from '../../assets/react-logo.png'
 import Image from 'next/image'

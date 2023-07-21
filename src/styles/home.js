@@ -1,5 +1,9 @@
 import styled from 'styled-components'
 
+
+/*   ALL STYLING FROM HOME LAYOUTS     */
+
+
 export const Container = styled.div`
   background-color: #fff;
 `

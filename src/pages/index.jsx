@@ -12,10 +12,11 @@ import {
   ProductTitle, 
   SearchContainer, 
   Title, 
-} from '@/styles-home'
+} from '@/styles/home'
 import { BiSearch } from 'react-icons/bi'
 
 const Home = () => {
+
   return (
     <TemplateDefault>
       <Container>
