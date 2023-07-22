@@ -27,8 +27,8 @@ const Card = ({ image, title, subtitle, actions }) => {
               </CardContent>
 
               {
-                actions ? (
-                  
+                actions 
+                ? (                  
                   <CardActions>
                     { actions }
                   </CardActions>

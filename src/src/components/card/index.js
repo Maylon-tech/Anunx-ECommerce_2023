@@ -4,6 +4,7 @@ import styled from 'styled-components'
 export const GridItem = styled.div`
     width: 300px;
     height: auto;
+    border-radius: 5px;
     box-shadow: 1px 2px 7px 1px rgba(0, 0, 0, .6);
 `
 
@@ -16,7 +17,7 @@ export const CardTopImage = styled.img`
     width: 100%;
     height: 170px;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 5px;
 `
 
 
@@ -38,7 +39,13 @@ export const Price = styled.div`
     font-size: 1.2rem;
 `
 
-// export const CardActions = styled.div``
+export const CardActions = styled.div`
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    align-items: center;
+    justify-content: center;
+`
 
 export const ButtonEdit = styled.div``
 

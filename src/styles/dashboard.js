@@ -1,8 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-    border: 3px solid purple;
-    height: 80vh;
+    
 `
 export const Title = styled.h1`
     font-size: 2.4rem;
@@ -25,15 +24,46 @@ export const PublicarBtn = styled.button`
 export const GridContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1.5rem;
     place-items: center;
     max-width: 1160px;
-    margin: 0 auto;
-    border: 3px solid orangered;
+    margin: 3rem auto;
 `
-
 
 // export const CardActions = styled.div``
 
-export const ButtonEdit = styled.div``
+export const ButtonEdit = styled.div`
+    background-color: blueviolet;
+    padding: .4rem;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    width: 100px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 
-export const ButtonRemove = styled.div``
+    > svg {
+        color: #fff;
+        font-size: 1.3rem;
+    }
+`
+
+export const ButtonRemove = styled.div`
+    background-color: crimson;
+    padding: .4rem;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    width: 100px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    > svg {
+        color: #fff;
+        font-size: 1.3rem;
+    }
+`
