@@ -1,16 +1,22 @@
 import React, { useState } from 'react'
+import { Formik } from 'formik'
+import * as yup from 'yup'
 import TemplateDefault from '../../src/templates/Default'
 import { 
     BoxDropZone,
     BoxDropZoneDinamic,
     Button,
     Container, 
+    Form, 
     FormContainer, 
     FormControl, 
+    FormControlPrice, 
+    FormHelpText, 
     IconButton, 
     Input, 
     Label, 
     LabelInside, 
+    MenuItem, 
     PriceInput, 
     PrincipalLabel, 
     Select, 
@@ -27,6 +33,19 @@ import Produto from '../../assets/react-logo.png'
 import Image from 'next/image'
 import {  useDropzone } from 'react-dropzone'
 
+
+const validationSchema = yup.object().shape({
+    title: yup.string()
+        .min(6, 'Escreva um titulo maior')
+        .max(12, 'Titulo muito longo')
+        .required('Campo Obrigatorio!'),
+
+    category: yup.string().required('Campo Obrigratorio!'),
+
+    description: yup.string()
+        .min(60, 'Escreva acima de 20 caracteres.')
+        .required('Campo Obrigatorio!'),
+})
 
 const Publish = () => {
     const [files, setFiles] = useState([])
@@ -55,117 +74,178 @@ const Publish = () => {
 
   return (
     <TemplateDefault>
+        <Formik
+            initialValues={{
+                title: '',
+                category: '',
+                description: ''
+            }}
+            validationSchema={validationSchema}
+            onSubmit={(values) => {
+                conosle.log("OK envior o form now@", values)
+            }}
+        >
+            {
+                ({
+                    values,
+                    errors,
+                    handleChange,
+                    handleSubmit,
+                }) => {
+                    console.log(errors)
+                    return (
+                        <Form onSubmit={handleSubmit}>
+                            <Container>
+                                <Title>Publicar Anuncio</Title>
+                                <SubTitle>Quanto mais detalhado, melhor!</SubTitle>
+                                
+                                <FormContainer>
+                                    <Wrapper>
+                                        <Label>Titulo do Anuncio</Label>
+                                        {/* Input de Titulo */}
+                                        <FormControl error={errors.title}>                                        
+                                            <Input
+                                                type='text'
+                                                name="title"
+                                                value={values.title}
+                                                onChange={handleChange} 
+                                                placeholder='ex: Carro com motor sem garantia.' 
+                                            />
+                                            <FormHelpText>
+                                                { errors.title }
+                                            </FormHelpText>
+                                        </FormControl>
+                                    </Wrapper>
 
-        <Container>
-            <Title>Publicar Anuncio</Title>
-            <SubTitle>Quanto mais detalhado, melhor!</SubTitle>
-            
-            <FormContainer>
-                <Wrapper>
-                    <Label>Titulo do Anuncio</Label>
-                    <Input
-                        type='text'
-                        onChange={() => {}} 
-                        placeholder='ex: Carro com motor sem garantia.' 
-                    />
-                </Wrapper>
+                                    <Wrapper>
+                                        <Label>Categoria</Label>
+                                        <FormControl error={errors.category}>
+                                            <Select
+                                                name="category"
+                                                value={values.category}
+                                                onChange={handleSubmit}                                        
+                                            >
+                                                <MenuItem className='active'> Selecione </MenuItem>
+                                                <MenuItem value="">Moda</MenuItem>
+                                                <MenuItem value="">Carros, Motos, Barcos</MenuItem>
+                                                <MenuItem value="">Servicos</MenuItem>
+                                                <MenuItem value="">Lazer</MenuItem>
+                                                <MenuItem value="">Moveis, casa e Jardim</MenuItem>
+                                                <MenuItem value="">Equipamentos e Ferramentas</MenuItem>
+                                                <MenuItem value="">Celualres e Tablets</MenuItem>
+                                                <MenuItem value="">Esporte</MenuItem>
+                                                <MenuItem value="">Tecnologia</MenuItem>
+                                                <MenuItem value="">Outros</MenuItem>
+                                            </Select>
+                                            <FormHelpText>
+                                                { errors.category }
+                                            </FormHelpText>
+                                        </FormControl>
+                                    </Wrapper>
+                        
+                                    <Wrapper>
+                                        <Label>Imagens</Label>
+                                        <h4>A Primeira imagens e a foto principal do anuncio.</h4>
+                                        <WrapperUpload>
 
-                <Wrapper>
-                    <Label>Categoria</Label>
-                    <Select
-                        onChange={() => {}}
-                    >
-                        <option className='active'> Selecione </option>
-                        <option value="">Moda</option>
-                        <option value="">Carros, Motos, Barcos</option>
-                        <option value="">Servicos</option>
-                        <option value="">Lazer</option>
-                        <option value="">Moveis, casa e Jardim</option>
-                        <option value="">Equipamentos e Ferramentas</option>
-                        <option value="">Celualres e Tablets</option>
-                        <option value="">Esporte</option>
-                        <option value="">Tecnologia</option>
-                        <option value="">Outros</option>
-                    </Select>
-                </Wrapper>
-    
-                <Wrapper>
-                    <Label>Imagens</Label>
-                    <h4>A Primeira imagens e a foto principal do anuncio.</h4>
-                    <WrapperUpload>
+                                            <BoxDropZone {...getRootProps()}>  
+                                                <input {...getInputProps()} />                      
+                                                <h4>Clique para adicionar ou arraste a imagem aqui.</h4>
+                                            </BoxDropZone>
 
-                        <BoxDropZone {...getRootProps()}>  
-                            <input {...getInputProps()} />                      
-                            <h4>Clique para adicionar ou arraste a imagem aqui.</h4>
-                        </BoxDropZone>
+                                            {
+                                                files.map((file, index) => (
+                                                    <BoxDropZoneDinamic key={file.name}>  
+                                                        <Image src={file.preview} alt='boxImg' width={140} height={140} />  
+                                                        
+                                                        {
+                                                            index === 0 
+                                                            ? <PrincipalLabel>Principal</PrincipalLabel> 
+                                                            : null
+                                                        }
 
-                        {
-                            files.map((file, index) => (
-                                <BoxDropZoneDinamic key={file.name}>  
-                                    <Image src={file.preview} alt='boxImg' width={140} height={140} />  
+                                                        <IconButton onClick={() => handleRemoveFile(file.name)}>
+                                                            <AiOutlineDelete />
+                                                        </IconButton>
+
+                                                    </BoxDropZoneDinamic>
+                                                ))
+                                            }
+
+                                        </WrapperUpload>
+                                    </Wrapper>
+
+                                    <Wrapper>
+                                        <Label>Descricao</Label>
+                                        <h4>Escreva os detalhes do que esta vendendo.</h4>
+                                        <FormControl error={errors.description}>                                        
+                                            <TextField
+                                                name="description"                                                
+                                            ></TextField>
+                                            <FormHelpText>
+                                                { errors.description }
+                                            </FormHelpText>
+                                        </FormControl>
+                                    </Wrapper>
+
+                                    <Wrapper>
+
+                                        <Label>Preco</Label>
+                                        <FormControlPrice>
+                                            <FormControl error={errors.category}>                                            
+                                                <PriceInput />
+                                                <FormHelpText>
+                                                    { errors.category }
+                                                </FormHelpText>
+                                            </FormControl>
+                                            <LabelInside>R$</LabelInside>
+                                        </FormControlPrice>                    
+                                        
+                                    </Wrapper>
+
+
+                                    <Wrapper>
+                                        <Label>Dados de Contato</Label>
+                                        <FormControl error={errors.category}>                                        
+                                            <Input
+                                                contactInput="bottomInput"
+                                                type='textl'
+                                                onChange={() => {}} 
+                                                placeholder='Nome' 
+                                            />
+                                            <Input
+                                                contactInput="bottomInput"
+                                                type='email'
+                                                onChange={() => {}} 
+                                                placeholder='E-Mail' 
+                                            />
+                                            <Input
+                                                contactInput="bottomInput"
+                                                type='phone'
+                                                onChange={() => {}} 
+                                                placeholder='Telefone' 
+                                            />
+                                            <FormHelpText>
+                                                { errors.category }
+                                            </FormHelpText>
+                                        </FormControl>
+                                    </Wrapper>
                                     
-                                    {
-                                        index === 0 
-                                        ? <PrincipalLabel>Principal</PrincipalLabel> 
-                                        : null
-                                    }
+                                    <WrapperBtn>
+                                        <Button type="submit">Publicar Anuncio</Button>
+                                    </WrapperBtn>
 
-                                    <IconButton onClick={() => handleRemoveFile(file.name)}>
-                                        <AiOutlineDelete />
-                                    </IconButton>
-
-                                </BoxDropZoneDinamic>
-                            ))
-                        }
-
-                    </WrapperUpload>
-                </Wrapper>
-
-                <Wrapper>
-                    <Label>Descricao</Label>
-                    <h4>Escreva os detalhes do que esta vendendo.</h4>
-                    <TextField></TextField>
-                </Wrapper>
-
-                <Wrapper>
-
-                    <Label>Preco</Label>
-                    <FormControl>
-                        <PriceInput />
-                        <LabelInside>R$</LabelInside>
-                    </FormControl>                    
-                    
-                </Wrapper>
+                                </FormContainer>
+                            </Container>
+                        </Form>
+                    )
+                }
+            }
+        </Formik>
 
 
-                <Wrapper>
-                    <Label>Dados de Contato</Label>
-                    <Input
-                        contactInput="bottomInput"
-                        type='textl'
-                        onChange={() => {}} 
-                        placeholder='Nome' 
-                    />
-                    <Input
-                        contactInput="bottomInput"
-                        type='email'
-                        onChange={() => {}} 
-                        placeholder='E-Mail' 
-                    />
-                    <Input
-                        contactInput="bottomInput"
-                        type='phone'
-                        onChange={() => {}} 
-                        placeholder='Telefone' 
-                    />
-                </Wrapper>
-                
-                <WrapperBtn>
-                    <Button type="button">Publicar Anuncio</Button>
-                </WrapperBtn>
-
-            </FormContainer>
-        </Container>
+    
+        
 
 
     </TemplateDefault>

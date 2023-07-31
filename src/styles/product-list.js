@@ -1,23 +1,14 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  
+  background-color: #fff;
 
-`
-
-
-export const Title = styled.h1`
-    font-size: 2.3rem;
-    text-align: center;
-    padding: 1.7rem;
-    font-weight: 500;
-    color: #333;
 `
 
 export const SearchContainer = styled.div`
     max-width: 720px;
     width: 100%;
-    margin: 0 auto;
+    margin: 3rem auto;
     position: relative;
     box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, .6);
 
@@ -30,7 +21,15 @@ export const SearchContainer = styled.div`
      }
 `
 
-
+export const InputSearch = styled.input`
+    padding: 1.2rem;
+    width: 95%;
+    border-radius: 5px;
+    position: relative;
+    border: none;
+    outline: none;
+    font-size: 1.2rem;
+`
 
 export const GridContainer = styled.div`
     display: grid;
@@ -39,4 +38,6 @@ export const GridContainer = styled.div`
     place-items: center;
     max-width: 1160px;
     margin: 0 auto;
+    background-color: #eee;
+    padding: 2rem 1.3rem;
 `

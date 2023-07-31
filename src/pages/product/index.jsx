@@ -1,4 +1,12 @@
 import React from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+
+import 'swiper/css'
+import 'swiper/css/effect-coverflow'
+import 'swiper/css/navigation'
+import 'swiper/css/navigation'
+import 'swiper/css/thumbs'
+
 import TemplateDefault from '@/src/templates/Default'
 import { 
     Avatar,
@@ -20,7 +28,12 @@ import {
     ProfileInfo,
     ProfileName, 
 } from '@/styles/product'
-
+import Image from 'next/image'
+// import Swiper from 'swiper'
+import { EffectCoverflow, Pagination, Navigation } from "swiper"
+import teste01 from '@/assets/teste/teste01.png'
+import teste02 from '@/assets/teste/teste02.jpg'
+import teste03 from '@/assets/teste/teste03.jpg'
 
 const Product = () => {
   return (
@@ -30,7 +43,39 @@ const Product = () => {
 
                 <GridLeft>
                     <BoxContainer>
-                        CAROUSEL
+                        <Swiper
+                            effect={'coverflow'}
+                            className='swiper-container'
+                            centeredSlides={true}
+                            loop={true}
+                            slidesPerView={'auto'}
+                            coverflowEffect={{
+                                rotate: 0,
+                                stretch: 0,
+                                depth: 100,
+                                modifier: 2.5,
+                              }}
+                            pagination={{el:'', clickable: true}}
+                            grabCursor={true}
+                            navigation={{
+                                nextEl: '.swiper-button-next',
+                                prevEl: '.swiper-button-prev',
+                                clickable: true,
+                              }}
+                            module={[EffectCoverflow, Pagination, Navigation]}
+                        >
+
+                            <SwiperSlide>
+                                <Image src={teste01} alt='teste01'  />
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <Image src={teste02} alt='teste02'  />
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <Image src={teste03} alt='teste03'  />
+                            </SwiperSlide>
+
+                        </Swiper>
                     </BoxContainer>
 
                     <BoxContainer>

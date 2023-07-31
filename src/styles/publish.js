@@ -27,6 +27,9 @@ export const FormContainer = styled.div`
     max-width: 960px;
     margin: 1rem auto;
 `
+export const Form = styled.form`
+
+`
 
 export const Wrapper = styled.form`
     max-width: 870px;
@@ -72,6 +75,8 @@ export const Input = styled.input`
     border-radius: ${({ contactInput }) => contactInput ? '5px' : null};
 `
 
+/* Select Category */
+
 export const Select = styled.select`
     padding: 1rem;
     border: none;
@@ -79,6 +84,16 @@ export const Select = styled.select`
     background: transparent;
 
     font-size: 1.2rem;
+
+`
+export const MenuItem = styled.option`
+
+`
+export const FormControl = styled.div`
+
+`
+
+export const FormHelpText = styled.div`
 
 `
 
@@ -208,7 +223,7 @@ export const WrapperBtn = styled.form`
     background: none;    
 `
 
-export const FormControl = styled.div`
+export const FormControlPrice = styled.div`
     position: relative;
     border: 1px solid gray;
     border-radius: 8px;
