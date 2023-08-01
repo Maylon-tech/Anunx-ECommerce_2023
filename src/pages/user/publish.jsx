@@ -36,8 +36,8 @@ import {  useDropzone } from 'react-dropzone'
 
 const validationSchema = yup.object().shape({
     title: yup.string()
-        .min(6, 'Escreva um titulo maior')
-        .max(12, 'Titulo muito longo')
+        .min(3, 'Escreva um titulo maior')
+        .max(30, 'Titulo muito longo')
         .required('Campo Obrigatorio!'),
 
     category: yup.string().required('Campo Obrigratorio!'),
@@ -45,6 +45,11 @@ const validationSchema = yup.object().shape({
     description: yup.string()
         .min(60, 'Escreva acima de 20 caracteres.')
         .required('Campo Obrigatorio!'),
+
+    price: yup.string().required('Campo Obrigratorio!'),
+    email: yup.string().required('Digite um e-mail valido.'),
+    name: yup.string().required('Campo Obrigratorio!'),
+    phone: yup.number().required('Campo Obrigratorio!'),
 })
 
 const Publish = () => {
@@ -180,6 +185,7 @@ const Publish = () => {
                                         <h4>Escreva os detalhes do que esta vendendo.</h4>
                                         <FormControl error={errors.description}>                                        
                                             <TextField
+                                                onChange={handleChange}
                                                 name="description"                                                
                                             ></TextField>
                                             <FormHelpText>
@@ -192,11 +198,12 @@ const Publish = () => {
 
                                         <Label>Preco</Label>
                                         <FormControlPrice>
-                                            <FormControl error={errors.category}>                                            
-                                                <PriceInput />
+                                            <FormControl error={errors.price}>                                            
+                                                <PriceInput onChange={handleChange} />
                                                 <FormHelpText>
-                                                    { errors.category }
+                                                    { errors.price }
                                                 </FormHelpText>
+                                                
                                             </FormControl>
                                             <LabelInside>R$</LabelInside>
                                         </FormControlPrice>                    
@@ -209,24 +216,35 @@ const Publish = () => {
                                         <FormControl error={errors.category}>                                        
                                             <Input
                                                 contactInput="bottomInput"
-                                                type='textl'
-                                                onChange={() => {}} 
-                                                placeholder='Nome' 
+                                                type='text'
+                                                name='name'
+                                                value={values.name}
+                                                onChange={handleChange} 
+                                                placeholder='Nome Completo.' 
                                             />
+                                            <FormHelpText>
+                                                { errors.name }
+                                            </FormHelpText>
                                             <Input
                                                 contactInput="bottomInput"
                                                 type='email'
-                                                onChange={() => {}} 
-                                                placeholder='E-Mail' 
+                                                name='email'
+                                                value={values.email}
+                                                onChange={handleChange} 
+                                                placeholder='E-Mail Valido.' 
                                             />
+                                            <FormHelpText>
+                                                { errors.email }
+                                            </FormHelpText>
                                             <Input
                                                 contactInput="bottomInput"
                                                 type='phone'
-                                                onChange={() => {}} 
+                                                value={values.phone}
+                                                onChange={handleChange} 
                                                 placeholder='Telefone' 
                                             />
                                             <FormHelpText>
-                                                { errors.category }
+                                                { errors.phone }
                                             </FormHelpText>
                                         </FormControl>
                                     </Wrapper>

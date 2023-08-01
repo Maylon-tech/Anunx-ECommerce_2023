@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   background-color: #eee;
-  border: 3px solid green;
 `
 
 export const Title = styled.h1`
@@ -27,8 +26,8 @@ export const FormContainer = styled.div`
     max-width: 960px;
     margin: 1rem auto;
 `
-export const Form = styled.form`
-
+export const Form = styled.div`
+    
 `
 
 export const Wrapper = styled.form`
@@ -46,8 +45,6 @@ export const Wrapper = styled.form`
         margin-left: 1rem;
     }
     padding: 1rem;
-
-
 `
 
 export const Label = styled.label`
@@ -58,6 +55,7 @@ export const Label = styled.label`
 `
 
 export const Input = styled.input`
+    width: 80%;
     padding: 1.3rem;
     outline: none;
     border: none;
@@ -184,6 +182,7 @@ export const IconButton = styled.div`
 `
 
 export const TextField = styled.textarea`
+    width: 80%;
     padding: 1.2rem;
     border-radius: 5px;
     border: 1px solid gray;
@@ -191,7 +190,8 @@ export const TextField = styled.textarea`
     margin: .7rem 0;
     outline: none;
     resize: none;
-    margin: 1rem;
+    font-size: 1.2rem;
+    color: #333;
 `
 
 export const Button = styled.button`
@@ -233,7 +233,7 @@ export const FormControlPrice = styled.div`
 `
 
 export const PriceInput = styled.input`
-    width: 90%;
+    width: 80%;
     padding: 1rem;
     border-radius: 5px;
     outline: none;
