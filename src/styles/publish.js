@@ -20,6 +20,10 @@ export const SubTitle = styled.h3`
     text-align: center;
 `
 
+export const ErrorMsg = styled.h4`
+    color: red;
+`
+
 export const FormContainer = styled.div`
     padding: 1rem;
     margin-top: 1.5rem;
@@ -224,28 +228,36 @@ export const WrapperBtn = styled.form`
 `
 
 export const FormControlPrice = styled.div`
-    position: relative;
     border: 1px solid gray;
     border-radius: 8px;
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
+    width: 85%;
+    height: 70px;
     margin: 1rem;
+    background-color: white;
+    position: relative;
 `
 
 export const PriceInput = styled.input`
-    width: 80%;
+    max-width: 950px;
+    width: 100%;
     padding: 1rem;
     border-radius: 5px;
     outline: none;
     border: none;
     font-size: 1.2rem;
+    background-color: #eee;
+    position: relative;
+    left: 80px;
+
 `
 
 export const LabelInside = styled.span`
     color: #555;
     position: absolute;
     left: 38px;
-    top: 17px;
+    top: 27px;
     font-size: 1.2rem;
     font-weight: bold;
 `
