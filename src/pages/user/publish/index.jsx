@@ -2,11 +2,8 @@ import React from 'react'
 import { Formik } from 'formik'
 import TemplateDefault from '../../../src/templates/Default'
 import { 
-    BoxDropZone,
-    BoxDropZoneDinamic,
     Button,
-    Container, 
-    ErrorMsg, 
+    Container,
     Form, 
     FormContainer, 
     FormControl, 
@@ -18,7 +15,6 @@ import {
     LabelInside, 
     MenuItem, 
     PriceInput, 
-    PrincipalLabel, 
     Select, 
     SubTitle, 
     TextField, 
@@ -27,10 +23,9 @@ import {
     WrapperBtn,
     WrapperUpload,
 } from '@/styles/publish'
-import { AiOutlineDelete } from 'react-icons/ai'
+
 import { initialValues, validationSchema } from './formValues'
-import Image from 'next/image'
-import {  useDropzone } from 'react-dropzone'
+import FileUpload from '@/src/components/fileUpload/FileUpload'
 
 const Publish = () => {
 
@@ -53,28 +48,6 @@ const Publish = () => {
                     setFieldValue,
                 }) => {
                     
-                    const { getRootProps, getInputProps } = useDropzone({
-                        accept: 'image/*',
-                        onDrop: (acceptedFile) => {
-                            
-                            const newFiles = acceptedFile.map((file) => {
-                                return {
-                                    ...file,
-                                    preview: URL.createObjectURL(file)
-                                }
-                            })
-                            setFieldValue('files', [
-                                ...values.files,
-                                newFiles
-                            ])
-                        }
-                    })
-                
-                    const handleRemoveFile = (fileName) => {
-                        const newFileState = values.files.filter(file => file.name !== fileName)
-                        setFieldValue('files', newFileState)
-                    }
-
                     return (
                         <Form onSubmit={handleSubmit}>
                             <Container>
@@ -129,39 +102,12 @@ const Publish = () => {
                         
                                     {/*  CAMPO UPLOAD DE IMAGENS  */}
                                     <Wrapper>
-                                        <Label>Imagens</Label>
-                                        <h4>A Primeira imagens e a foto principal do anuncio.</h4>
-                                        { 
-                                            errors.files && touched.files
-                                                ? <ErrorMsg>{errors.files}</ErrorMsg>
-                                                : null
-                                        }
-                                        <WrapperUpload>
-                                            <BoxDropZone {...getRootProps()}>  
-                                                <input name='files' {...getInputProps()} onChange={handleChange} />                      
-                                                <h4>Clique para adicionar ou arraste a imagem aqui.</h4>
-                                            </BoxDropZone>
-
-                                            {
-                                                values.files.map((file, index) => (
-                                                    <BoxDropZoneDinamic key={file.index}>  
-                                                        <Image src={file.preview} alt='boxImg' width={140} height={140} />  
-                                                        
-                                                        {
-                                                            index === 0 
-                                                            ? <PrincipalLabel>Principal</PrincipalLabel> 
-                                                            : null
-                                                        }
-
-                                                        <IconButton onClick={() => handleRemoveFile(file.name)}>
-                                                            <AiOutlineDelete />
-                                                        </IconButton>
-
-                                                    </BoxDropZoneDinamic>
-                                                ))
-                                            }
-
-                                        </WrapperUpload>
+                                        <FileUpload 
+                                            files={values.files}
+                                            errors={errors.files}
+                                            touched={touched.files} 
+                                            setFieldValue={setFieldValue}
+                                        />
                                     </Wrapper>
 
                                     {/*  CAMPO DE DESCRICAO DO PRODUTO - TEXTAREA  */}
@@ -192,9 +138,9 @@ const Publish = () => {
                                                     placeholder='Qual o valor do Produto?' 
                                                 />
                                                 <LabelInside>R$</LabelInside>
-                                                {/*<FormHelpText>
+                                                <FormHelpText>
                                                     { errors.price && touched.price ? errors.price : null }
-                                                 </*FormHelpText>
+                                                 </FormHelpText>
                                                 
                                             </FormControl>
                                         </FormControlPrice>                    

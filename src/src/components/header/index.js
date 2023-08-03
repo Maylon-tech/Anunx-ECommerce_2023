@@ -1,22 +1,19 @@
 import styled from 'styled-components'
 
-
 export const Container = styled.div`
-    max-width: 1360px;
     width: 100%;
     height: 100%;
-    margin: 0 auto;
     background-color: #333;
 `
 
-
 export const Nav = styled.nav`
+    max-width: 1360px;
+    margin: 0 auto;
     display: flex;
     align-items: center;
     padding: 0 2rem;
     height: 75px;
     color: #fff;
-
 `
 
 /*  Left side of Menu  */ 
