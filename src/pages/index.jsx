@@ -6,9 +6,9 @@ import {
   InputSearch,  
   SearchContainer, 
   Title, 
-} from '@/styles/home'
+} from '../styles/home'
 import { BiSearch } from 'react-icons/bi'
-import Card from '@/src/components/card/Card'
+import Card from '../src/components/card/Card'
 
 const Home = () => {
 
